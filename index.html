@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru" class="antialiased selection:bg-white selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID_ARCH // SINGULARITY</title>
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --text-pure: #F3F4F6;
+            --text-muted: #6B7280;
+            --ease-monument: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-pure);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden; /* Lock scroll for full-screen impact */
+        }
+
+        .font-mono-tech {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Tactical Noise */
+        .noise-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+        }
+
+        /* The Quantum Core (Pure CSS) */
+        .core-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .core-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            animation: rotate-ring 40s linear infinite;
+        }
+
+        .core-ring::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: 50%;
+            width: 2px; height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.4);
+        }
+
+        .core-ring-2 {
+            inset: 60px;
+            border: 1px dashed rgba(255, 255, 255, 0.05);
+            animation: rotate-ring 60s linear infinite reverse;
+        }
+
+        .core-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            filter: blur(40px);
+            animation: pulse-glow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes rotate-ring {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        /* Typography & Layout Rules */
+        .tight-tracking { letter-spacing: -0.04em; }
+        .wide-tracking { letter-spacing: 0.3em; }
+        .line-height-monolith { line-height: 0.9; }
+
+        /* Revealing Animations */
+        .reveal-mask {
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .reveal-text {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform 1.2s var(--ease-monument);
+        }
+
+        .loaded .reveal-text {
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1.5s var(--ease-monument);
+        }
+
+        .loaded .fade-in {
+            opacity: 1;
+        }
+
+        /* Magnetic Data Cells */
+        .data-cell {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .data-cell::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+            transform-origin: top;
+            transition: transform 0.6s var(--ease-monument), background 0.6s var(--ease-monument);
+        }
+        .data-cell:hover::before {
+            background: rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between p-6 md:p-12">
+
+    <!-- Background Elements -->
+    <div class="noise-layer"></div>
+    <div class="core-container">
+        <div class="core-ring"></div>
+        <div class="core-ring core-ring-2"></div>
+        <div class="core-glow"></div>
+    </div>
+
+    <!-- HEADER / BRANDING -->
+    <header class="relative z-10 flex justify-between items-start fade-in" style="transition-delay: 0.2s;">
+        <!-- Logo -->
+        <div class="flex items-center gap-4 group cursor-pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-700 var(--ease-monument) group-hover:rotate-90">
+                <rect x="2" y="2" width="8" height="8" stroke="white" stroke-width="1.5"/>
+                <rect x="14" y="14" width="8" height="8" fill="white"/>
+                <path d="M14 2L22 10M2 14L10 22" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            </svg>
+            <div class="font-bold text-lg tracking-widest uppercase">
+                Void<span class="text-white/30 ml-1">Arch</span>
+            </div>
+        </div>
+
+        <!-- Metric Telemetry -->
+        <div class="hidden md:flex flex-col text-right font-mono-tech text-[10px] text-gray-500 uppercase tracking-widest gap-1">
+            <div class="flex items-center justify-end gap-2">
+                <span class="w-1.5 h-1.5 bg-white/80 rounded-full animate-pulse"></span>
+                SYS.STATUS: ONLINE
+            </div>
+            <div>LATENCY: <span class="text-white/80">4ms</span></div>
+            <div>ENCRYPTION: <span class="text-white/80">AURA-256</span></div>
+        </div>
+    </header>
+
+    <!-- MAIN COMPOSITION -->
+    <main class="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full">
+        <!-- Motto / Kicker -->
+        <div class="mb-6 font-mono-tech text-xs md:text-sm text-gray-400 uppercase wide-tracking reveal-mask">
+            <span class="reveal-text" style="transition-delay: 0.4s;">// Архитектура нулевого сопротивления</span>
+        </div>
+
+        <!-- H1 Hero Title -->
+        <h1 class="font-medium text-6xl md:text-[8vw] tight-tracking line-height-monolith text-white uppercase max-w-5xl">
+            <div class="reveal-mask block">
+                <span class="reveal-text" style="transition-delay: 0.5s;">Сингулярность</span>
+            </div>
+            <div class="reveal-mask block">
+                <span class="reveal-text text-white/40 italic" style="transition-delay: 0.6s;">Интерфейса.</span>
+            </div>
+        </h1>
+
+        <!-- Abstract Data Block (Swiss Grid Alignment) -->
+        <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 max-w-3xl fade-in" style="transition-delay: 1s;">
+            <div class="data-cell">
+                <div class="font-mono-tech text-[10px] text-gray-500 uppercase mb-2">Философия</div>
+                <div class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                    Мы не создаем дизайн. Мы конструируем алгоритмы визуального давления, где каждый пиксель несет смысловую нагрузку.
+                </div>
+            </div>
+            <div class="data-cell">
+                <div class="font-mono-tech text-[10px] text-gray-500 uppercase mb-2">Технология</div>
+                <div class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                    Полный отказ от избыточного кода. Рендеринг на чистом GPU, математическая верстка и абсолютная тишина в UI.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 flex justify-between items-end fade-in font-mono-tech text-[10px] uppercase tracking-widest text-gray-500" style="transition-delay: 1.2s;">
+        <div>
+            &copy; 2026 VOID_ARCH INITIATIVE
+        </div>
+        
+        <!-- Minimal Interactive Button -->
+        <button class="group relative px-6 py-3 border border-white/10 hover:border-white/40 bg-white/5 transition-colors overflow-hidden">
+            <div class="relative z-10 text-white group-hover:text-black transition-colors duration-500">Инициализировать контакт</div>
+            <!-- Swipe hover effect -->
+            <div class="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 var(--ease-monument) z-0"></div>
+        </button>
+    </footer>
+
+    <!-- Initialization Script -->
+    <script>
+        // Start reveal animations after DOM is painted
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                document.body.classList.add('loaded');
+            });
+        });
+
+        // Optional: Cursor Parallax for the Quantum Core
+        const core = document.querySelector('.core-container');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            core.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+        });
+    </script>
+</body>
+</html>
